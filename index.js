@@ -37,8 +37,8 @@ async function fetchCharacters(url) {
 		cardContainer.appendChild(createCharacterCard(result));
     });
 }
-
-// fetchCharacters(baseURL + 'character');
+// 
+ //fetchCharacters(baseURL + 'character');
 // fetchCharacters(baseURL + 'character?page=3');
 fetchCharacters(baseURL + `character/?name=${searchQuery}`);
 
@@ -80,15 +80,3 @@ function showNextCharacter() {
 |----------------------------------------------------------------------------------
 | 
 */
-const searchInput = document.querySelector('[data-js="search-bar"] input')
-
-searchBar.addEventListener('submit', showSearchResults);
-
-function showSearchResults() {
-    searchQuery = searchInput.value;
-
-    console.log(searchQuery);
-
-    // fetchCharacters(baseURL + `character?page=${page}&name=${searchQuery}`);
-    // fetchCharacters(baseURL + `character/?name=${searchQuery}`);
-}
