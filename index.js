@@ -23,31 +23,40 @@ pagination.textContent = `${page} / ${maxPage}`;
 const baseURL = 'https://rickandmortyapi.com/api/';
 
 async function fetchCharacters(url) {
-	console.log("fetching characters from: " + url);
-    cardContainer.innerHTML = '';
-    try {
-        const resp = await fetch(url);
-        if (!resp.ok) {
-            cardContainer.innerHTML = '<p>Keine Ergebnisse gefunden.</p>';
-            return;
-        }
-        const data = await resp.json();
+	console.log('fetching characters from: ' + url);
+	cardContainer.innerHTML = '';
+
+	try {
+		const resp = await fetch(url);
+
+		if (!resp.ok) {
+			cardContainer.innerHTML = '<p>Keine Ergebnisse gefunden.</p>';
+			return;
+		}
+
+		const data = await resp.json();
+		const results = data.results;
+
 		maxPage = data.info.pages;
-		console.log("maxPage: " + maxPage);
 		pagination.textContent = `${page} / ${maxPage}`;
-        const results = data.results;
-        results.forEach((result) => {
-            cardContainer.appendChild(createCharacterCard(result));
-        });
-    } catch (error) {
-        cardContainer.innerHTML = '<p>Fehler beim Laden der Daten.</p>';
-        console.error(error);
-    }
+
+		console.log(data.results);
+		console.log('maxPage: ' + maxPage);
+
+		results.forEach((result) => {
+			cardContainer.appendChild(createCharacterCard(result));
+		});
+	} catch (error) {
+		cardContainer.innerHTML = '<p>Fehler beim Laden der Daten.</p>';
+		navigation.innerHTML = '';
+
+		console.error(error);
+	}
 }
-// 
- //fetchCharacters(baseURL + 'character');
+
+fetchCharacters(baseURL + 'character');
 // fetchCharacters(baseURL + 'character?page=3');
-fetchCharacters(baseURL + `character/?name=${searchQuery}`);
+// fetchCharacters(baseURL + `character/?name=${searchQuery}`);
 
 /*---------------------------------------------------------------------------------
 | Pagination
@@ -58,46 +67,44 @@ prevButton.addEventListener('click', showPreviousCharacter);
 nextButton.addEventListener('click', showNextCharacter);
 
 function showPreviousCharacter(event) {
- page--;
-    if (page < 1) page = 1;
-        else showSearchResults(event, page); 
-
-
-
+	page--;
+	if (page < 1) page = 1;
+	else showSearchResults(event, page);
 }
 
 function showNextCharacter(event) {
-	    page++;
-    if (page > maxPage) page = maxPage;
-      else  showSearchResults(event, page);  
-
-
-
+	page++;
+	if (page > maxPage) page = maxPage;
+	else showSearchResults(event, page);
 }
-
 
 /*---------------------------------------------------------------------------------
 | Search Bar
 |----------------------------------------------------------------------------------
 | 
 */
-const searchInput = document.querySelector('[data-js="search-bar"] input')
+const searchInput = document.querySelector('[data-js="search-bar"] input');
 
 searchBar.addEventListener('submit', showSearchResults);
 
 function showSearchResults(event, newPage = 1) {
-    event.preventDefault();
-    searchQuery = searchInput.value;
-    if (event.type === "submit") {
-        page = 1;
-    } else {
-        page = newPage;
-    }
-    let url;
-    if (searchQuery.trim() === "") {
-        url = baseURL + `character?page=${page}`;
-    } else {
-        url = baseURL + `character?page=${page}&name=${searchQuery}`;
-    }
-    fetchCharacters(url);
+	event.preventDefault();
+
+	searchQuery = searchInput.value;
+
+	if (event.type === 'submit') {
+		page = 1;
+	} else {
+		page = newPage;
+	}
+
+	let url;
+
+	if (searchQuery.trim() === '') {
+		url = baseURL + `character?page=${page}`;
+	} else {
+		url = baseURL + `character?page=${page}&name=${searchQuery}`;
+	}
+
+	fetchCharacters(url);
 }
