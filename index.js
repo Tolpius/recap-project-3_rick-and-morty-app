@@ -2,6 +2,7 @@ import { createCharacterCard } from './components/CharacterCard/CharacterCard.js
 
 import { NavButton } from './components/NavButton/NavButton.js';
 import { NavPagination } from './components/NavPagination/NavPagination.js';
+import { SearchBar } from './components/SearchBar/SearchBar.js';
 
 const cardContainer = document.querySelector('[data-js="card-container"]');
 const searchBarContainer = document.querySelector('[data-js="search-bar-container"]');
