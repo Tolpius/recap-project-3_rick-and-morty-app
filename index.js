@@ -1,5 +1,7 @@
 import { createCharacterCard } from './components/CharacterCard/CharacterCard.js';
 
+import { NavButton } from './components/NavButton/NavButton.js';
+
 const cardContainer = document.querySelector('[data-js="card-container"]');
 const searchBarContainer = document.querySelector('[data-js="search-bar-container"]');
 const searchBar = document.querySelector('[data-js="search-bar"]');
