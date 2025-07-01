@@ -1,25 +1,18 @@
 .search-bar-container {
   width: 300px;
-
-  margin: auto;
 }
 
 .search-bar {
   padding: 10px 20px;
-  background-color: var(--color-secondary);  
+  background-color: var(--color-secondary);
   display: grid;
   grid-template-columns: 1fr 24px;
-
-  background-color: rgb(132, 7, 93);
-  color: white;  
 }
 
 .search-bar__input {
   background-color: transparent;
   border: none;
-  /* color: var(--color-primary); */
-  color: white;
-  font-size: 1.2em;
+  color: var(--color-primary);
 }
 
 .search-bar__button {
