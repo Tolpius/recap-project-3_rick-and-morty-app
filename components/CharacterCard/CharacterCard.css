@@ -1,10 +1,28 @@
 .card-container {
-  margin-bottom: 10px;
-}
+        margin-bottom: 30px;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 25px;
+        flex-wrap: wrap;
+        
+        /* max-width: 1500px; */
+    }
+
 .card {
   width: 300px;
   background-color: var(--color-secondary);
+  
+  margin-bottom: 10px;
+  box-shadow: 5px 5px 5px #898989;
+  border-radius: 12px;
+  transition: transform 0.5s ease-in-out;
+
+  
 }
+
 
 .card__info {
   display: grid;
@@ -14,6 +32,12 @@
   padding: 10px 20px 20px;
   display: grid;
   gap: 20px;
+
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  background-color: #e93db4;
+  color: rgb(81, 247, 81);
+  background-image: url("../../assets/rauschen.png");
 }
 
 .card__info-description {
@@ -22,4 +46,15 @@
 
 li {
   list-style: none;
+}
+
+/*------------------------------------------------------*/
+.card__image-container img {
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+
+}
+
+.card:hover {
+    transform: scale(1.02);
 }

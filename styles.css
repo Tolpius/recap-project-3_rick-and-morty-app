@@ -3,6 +3,10 @@
 @import "components/NavButton/NavButton.css";
 @import "components/NavPagination/NavPagination.css";
 
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
+
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -12,21 +16,48 @@
 :root {
   --color-primary: rgb(51, 51, 51);
   --color-secondary: #f6f6f6;
-  --font-family: system-ui;
+  /* --font-family: system-ui; */
+  --font-family: "Sour Gummy";
 }
 
 body {
   font-family: var(--font-family);
   color: var(--color-primary);
-  padding: 20px;
+  padding: 10px;
+  background-color: aqua;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url("./assets/rauschen.png");
 }
+  
 
 main {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  align-items: stretch;
+  gap: 15px;
 }
 
 .title {
   padding: 10px 0;
+}
+
+
+/*------------------------------------------------------*/
+@media screen and (min-width: 770px) {
+    body {
+        padding: 20px;       
+    }
+
+    .title {
+        font-size: 3.5rem;
+    }
+  
+    main {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch; 
+    }
 }
